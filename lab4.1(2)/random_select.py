@@ -64,9 +64,26 @@ def mix_arrays(R_dataSet, S_dataSet, p):
     mask = r > p                                                                        #creates a boolean array. An element becomes true if the value in r is more than the probability
     res = np.array(list(map(lambda x: not x, mask))) * S_dataSet + mask * R_dataSet     
     print(f"\nmixed with probability {p}:\n{res}")
+    
+def mix_arrays2(R_dataSet, S_dataSet, p):
+    """DESCRIPTION: mix_arrays method 2"""
+    
+    r = rand.rand(len(R_dataSet))
+    mask = r > p
+    print(f"\nmixed with probability {p}:\n{np.where(mask, R_dataSet, S_dataSet)}")
+    
+def mix_arrays3(R_dataSet, S_dataSet, p):
+    """DESCRIPTION: mix_arrays method 3"""
+    
+    r = rand.rand(len(R_dataSet))
+    mask = r > p
+    S_dataSet[mask] = R_dataSet[mask]
+    print(f"\nmixed with probability {p}:\n{S_dataSet}")
 
-
-
+    
+    
 p = check_probability()
 R_dataSet, S_dataSet = read_input()
 mix_arrays(R_dataSet, S_dataSet, p)
+mix_arrays2(R_dataSet, S_dataSet, p)
+mix_arrays3(R_dataSet, S_dataSet, p)
