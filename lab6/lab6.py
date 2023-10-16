@@ -52,7 +52,6 @@ change_clr = rand.randint(1, 20)
 status = 'moving cathcing'
 ret, frame1 = cap.read()
 ret, frame2 = cap.read()
-output = open("output.txt", 'w')
 while ret:
     key = cv.waitKey(20) & 0xff
     gray1 = gray_img(frame1)
